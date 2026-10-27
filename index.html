@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Happy 20th Birthday Syerli! </title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pinkish: { 50: '#fff1f2', 100: '#ffe4e6', 200: '#fecdd3', 300: '#fda4af', 400: '#fb7185', 500: '#f43f5e', 600: '#e11d48' }
+          },
+          fontFamily: { fredoka: ['Fredoka', 'sans-serif'], sans: ['Plus Jakarta Sans', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #fce7f3;
+      background-image: radial-gradient(#f472b6 2px, transparent 2px);
+      background-size: 24px 24px;
+      touch-action: manipulation;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
+      border: 3px solid #f472b6;
+      box-shadow: 0 10px 30px rgba(244, 63, 94, 0.2);
+    }
+    .candle-flame {
+      width: 16px; height: 28px;
+      background: linear-gradient(to top, #ff0000, #ff9900, #ffff00);
+      border-radius: 50% 50% 20% 20%;
+      box-shadow: 0 0 15px #ff9900, 0 0 30px #ff0000;
+      animation: flicker 0.6s infinite alternate;
+      transform-origin: center bottom;
+    }
+    @keyframes flicker {
+      0% { transform: scale(1) rotate(-2deg); opacity: 0.9; }
+      100% { transform: scale(1.15) rotate(2deg); opacity: 1; }
+    }
+    .custom-scroll::-webkit-scrollbar { width: 6px; }
+    .custom-scroll::-webkit-scrollbar-track { background: #fce7f3; border-radius: 10px; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: #f472b6; border-radius: 10px; }
+  </style>
+</head>
+<body class="font-sans text-slate-800 antialiased min-h-[100dvh] flex flex-col justify-between overflow-x-hidden select-none">
+
+  <!-- Header -->
+  <header class="w-full p-4 flex justify-between items-center z-25 max-w-md mx-auto">
+    <div class="flex items-center gap-2 bg-white/90 backdrop-blur border-2 border-pink-400 px-3 py-1.5 rounded-full shadow-sm">
+      <span class="w-3 h-3 rounded-full bg-pink-500 animate-pulse"></span>
+      <span class="font-fredoka font-bold text-pink-600 text-sm">SYERLI 20th BDAY </span>
+    </div>
+    <button id="bgmBtn" onclick="toggleBGM()" class="bg-white border-2 border-pink-400 p-2 rounded-full shadow-md text-pink-600 hover:bg-pink-50 transition active:scale-95">
+      <i data-lucide="music" class="w-5 h-5"></i>
+    </button>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-1 flex items-center justify-center p-4 w-full max-w-md mx-auto relative">
+    
+    <!-- PAGE 1 -->
+    <section id="page-1" class="page-slide active w-full flex flex-col items-center text-center space-y-4">
+      <div class="glass-card p-5 rounded-3xl w-full flex flex-col items-center space-y-3 relative overflow-hidden">
+        <div class="bg-pink-100 border-2 border-pink-400 px-4 py-1 rounded-full">
+          <span class="font-fredoka text-xs text-pink-600 uppercase tracking-widest font-semibold">Special Edition </span>
+        </div>
+        
+        <h1 class="font-fredoka text-2xl md:text-3xl text-pink-600 font-bold leading-tight">
+          Happy 20th Birthday!<br/>
+          <span class="text-slate-800 text-xl md:text-2xl">Syerli Adelia Zahra 👑</span>
+        </h1>
+        
+        <div class="w-32 h-32 md:w-36 md:h-36 bg-pink-200 rounded-2xl border-4 border-white shadow-md flex items-center justify-center relative overflow-hidden my-1">
+          <img src="syerli.jpg" alt="Syerli" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1513151233558-d860c5398176?w=400&auto=format&fit=crop'">
+          <div class="absolute bottom-1 right-1 bg-pink-500 text-white p-1 rounded-full">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+          </div>
+        </div>
+
+        <p class="text-xs text-slate-600 font-medium px-2">
+          Hi Syerli! Klik tombol di bawah buat mulai ngerayain hari spesial kamu bareng-bareng! 🎉
+        </p>
+
+        <button onclick="nextPage()" class="w-full py-3 bg-gradient-to-r from-pink-500 to-rose-400 text-white font-fredoka text-base font-bold rounded-2xl shadow-lg border-2 border-white flex items-center justify-center gap-2 active:scale-95 transition">
+          Yuk Mulai!  <i data-lucide="arrow-right" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- PAGE 2 -->
+    <section id="page-2" class="page-slide hidden w-full flex flex-col items-center text-center space-y-4">
+      <div class="glass-card p-5 rounded-3xl w-full flex flex-col items-center space-y-3">
+        <h2 class="font-fredoka text-xl text-pink-600 font-bold">Make a Wish & Tiup Lilin! 🎂</h2>
+        <p class="text-xs text-slate-600">Tekan tombol tiup atau klik di area kue untuk memadamkan lilin!</p>
+
+        <div onclick="blowCandle()" class="cursor-pointer relative py-2 flex flex-col items-center">
+          <div id="flamesContainer" class="flex gap-8 mb-1">
+            <div class="candle-flame"></div>
+            <div class="candle-flame"></div>
+          </div>
+          
+          <div class="flex gap-6 mb-2">
+            <div class="w-4 h-12 bg-gradient-to-t from-pink-400 to-pink-300 rounded-t-lg border-2 border-white font-fredoka text-xs text-white flex items-center justify-center font-bold">2</div>
+            <div class="w-4 h-12 bg-gradient-to-t from-pink-400 to-pink-300 rounded-t-lg border-2 border-white font-fredoka text-xs text-white flex items-center justify-center font-bold">0</div>
+          </div>
+
+          <div class="w-40 h-8 bg-pink-300 rounded-t-2xl border-x-4 border-t-4 border-white flex justify-around items-center px-2 shadow-inner">
+            <span class="w-2.5 h-2.5 bg-white rounded-full"></span>
+            <span class="w-2.5 h-2.5 bg-white rounded-full"></span>
+            <span class="w-2.5 h-2.5 bg-white rounded-full"></span>
+            <span class="w-2.5 h-2.5 bg-white rounded-full"></span>
+          </div>
+          <div class="w-52 h-12 bg-pink-400 rounded-b-2xl border-4 border-white flex justify-center items-center relative shadow-md">
+            <span class="font-fredoka text-white text-xs font-bold tracking-wider">SYERLI 20TH </span>
+          </div>
+        </div>
+
+        <div id="blowStatus" class="text-xs font-fredoka text-pink-600 font-semibold min-h-[20px]">
+          Lilin sedang menyala... 🔥
+        </div>
+
+        <button onclick="blowCandle()" class="w-full py-2.5 bg-pink-500 hover:bg-pink-600 text-white font-fredoka font-bold rounded-2xl shadow-md border-2 border-white active:scale-95 transition flex items-center justify-center gap-2 text-sm">
+          <i data-lucide="wind" class="w-4 h-4"></i> Tiup Lilin Sekarang! 💨
+        </button>
+      </div>
+    </section>
+
+    <!-- PAGE 3 -->
+    <section id="page-3" class="page-slide hidden w-full flex flex-col items-center text-center space-y-4">
+      <div class="glass-card p-3 rounded-3xl w-full flex flex-col h-[70vh]">
+        <div class="flex items-center gap-2 border-b border-pink-200 pb-2 mb-2">
+          <div class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
+          <h2 class="font-fredoka text-base text-pink-600 font-bold">daddy issue</h2>
+        </div>
+
+        <div id="chatContainer" class="flex-1 overflow-y-auto custom-scroll space-y-2.5 p-2 text-left text-xs font-sans">
+          <div class="flex gap-2 items-start">
+            <div class="w-7 h-7 rounded-full bg-pink-400 border border-white flex items-center justify-center font-fredoka font-bold text-white text-xs shrink-0">P</div>
+            <div class="bg-white border border-pink-200 p-2.5 rounded-2xl rounded-tl-none shadow-sm max-w-[80%]">
+              <span class="font-fredoka text-pink-600 font-bold block text-[10px] mb-0.5">Pasya </span>
+              Happy 20th Birthday Syerli! 🎉✨ Wish you all the best & tetep jadi sahabat terbaik akuuu! 💕
+            </div>
+          </div>
+
+          <div class="flex gap-2 items-start">
+            <div class="w-7 h-7 rounded-full bg-rose-400 border border-white flex items-center justify-center font-fredoka font-bold text-white text-xs shrink-0">A</div>
+            <div class="bg-white border border-pink-200 p-2.5 rounded-2xl rounded-tl-none shadow-sm max-w-[80%]">
+              <span class="font-fredoka text-pink-600 font-bold block text-[10px] mb-0.5">Andin </span>
+              Happy Birthday Syerli!! 🥳 Makin cantik, pinter, & sukses terus yaa di umur 20 ini! Lop uuu 💞
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-2 border-t border-pink-200 space-y-1.5">
+          <button onclick="sendQuickReply()" class="w-full py-1.5 bg-pink-100 border border-pink-300 text-pink-600 font-fredoka text-xs rounded-xl hover:bg-pink-200 transition font-semibold">
+            Balas Cepat: "Makasi banyakkk 💖✨"
+          </button>
+          
+          <div class="flex gap-2">
+            <input type="text" id="customChatInput" placeholder="Ketik balasan Syerli..." class="flex-1 px-3 py-1.5 bg-white border border-pink-300 rounded-xl text-xs focus:outline-none focus:border-pink-500">
+            <button onclick="sendCustomChat()" class="px-3.5 py-1.5 bg-pink-500 text-white font-fredoka text-xs font-bold rounded-xl hover:bg-pink-600 transition">
+              Kirim
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 4 -->
+    <section id="page-4" class="page-slide hidden w-full flex flex-col items-center text-center space-y-4">
+      <div class="glass-card p-4 rounded-3xl w-full flex flex-col items-center space-y-3">
+        <h2 class="font-fredoka text-xl text-pink-600 font-bold">Memories 📸</h2>
+        <p class="text-xs text-slate-600">Kumpulan momen seru & kenangan manis bareng Syerli!</p>
+
+        <div class="w-full space-y-3 max-h-[52vh] overflow-y-auto custom-scroll pr-1">
+          <div class="bg-white p-2.5 rounded-2xl shadow-sm border-2 border-pink-200 flex flex-col items-center">
+            <div class="w-full h-36 rounded-xl overflow-hidden mb-1.5 bg-pink-100">
+              <img src="foto1.jpg" alt="Memory 1" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=500&auto=format&fit=crop'">
+            </div>
+            <span class="font-fredoka text-[11px] text-pink-600 font-semibold">"momen photobooth di benkop waktu tanggal 22 Juni 2026 ! 🕶️✨"</span>
+          </div>
+
+          <div class="bg-white p-2.5 rounded-2xl shadow-sm border-2 border-pink-200 flex flex-col items-center">
+            <div class="w-full h-36 rounded-xl overflow-hidden mb-1.5 bg-pink-100">
+              <img src="foto2.jpg" alt="Memory 2" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=500&auto=format&fit=crop'">
+            </div>
+            <span class="font-fredoka text-[11px] text-pink-600 font-semibold">"Momen photobooth bertiga waktu tanggal 20 juii 2026 ! 💕"</span>
+          </div>
+
+          <div class="bg-white p-2.5 rounded-2xl shadow-sm border-2 border-pink-200 flex flex-col items-center">
+            <div class="w-full h-36 rounded-xl overflow-hidden mb-1.5 bg-pink-100">
+              <img src="foto3.jpg" alt="Memory 3" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500&auto=format&fit=crop'">
+            </div>
+            <span class="font-fredoka text-[11px] text-pink-600 font-semibold">"terakhir poto kita berduaa anjay ! 🌟"</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 5 -->
+    <section id="page-5" class="page-slide hidden w-full flex flex-col items-center text-center space-y-4">
+      <div class="glass-card p-5 rounded-3xl w-full flex flex-col items-center space-y-3">
+        <h2 class="font-fredoka text-xl text-pink-600 font-bold">Surat Spesial Dari Pasya </h2>
+        <p class="text-xs text-slate-600">Klik amplop di bawah ini untuk membaca ucapan ulang tahunnya!</p>
+
+        <div id="envelopeCard" onclick="toggleEnvelope()" class="w-full bg-pink-100 border-2 border-pink-400 p-4 rounded-2xl shadow-sm cursor-pointer hover:bg-pink-200/50 transition relative overflow-hidden">
+          <div id="envelopeCover" class="flex flex-col items-center py-4 space-y-2">
+            <i data-lucide="mail-heart" class="w-10 h-10 text-pink-500 animate-bounce"></i>
+            <span class="font-fredoka text-xs text-pink-600 font-bold">Buka Surat Buat Syerli </span>
+          </div>
+
+          <div id="envelopeContent" class="hidden text-left space-y-2.5 font-sans text-xs text-slate-700 leading-relaxed bg-white p-3.5 rounded-xl border border-pink-300 shadow-inner">
+            <p class="font-fredoka text-pink-600 text-xs font-bold">To : Syerli Adelia Zahra 💖,</p>
+            <p>Happy 20th Birthday, Syerli!! 🥳✨ Gak kerasa yaa kamu udah nambah umur jadi 20 tahun sekarang.</p>
+            <p>Semoga di umur kepala 2 ini, semua impian & cita-cita kamu makin dipermudah, selalu sehat, panjang umur, bahagia terus, dan dikelilingi orang-orang yang sayang sama kamu! </p>
+            <p>Makasih yaa udah jadi sahabat yang baik, seru, dan selalu ada. Tetap jadi Syerli yang aku kenal yaa ! Wish you all the best syerli! </p>
+            <p class="font-fredoka text-right text-pink-500 font-bold pt-1">- from Pasya </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 6 -->
+    <section id="page-6" class="page-slide hidden w-full flex flex-col items-center text-center space-y-4">
+      <div class="glass-card p-4 rounded-3xl w-full flex flex-col items-center space-y-2.5">
+        <div class="flex items-center justify-between w-full">
+          <h2 class="font-fredoka text-lg text-pink-600 font-bold">Game Arena 🎮</h2>
+          <span id="gameScoreText" class="text-xs font-fredoka bg-pink-500 text-white px-3 py-1 rounded-full font-bold">Score: 0</span>
+        </div>
+
+        <div class="flex w-full gap-1 bg-pink-100 p-1 rounded-xl border border-pink-300">
+          <button onclick="switchGame('catch')" id="tab-catch" class="flex-1 py-1 text-[11px] font-fredoka font-bold rounded-lg bg-pink-500 text-white shadow">Cake Catch</button>
+          <button onclick="switchGame('dodge')" id="tab-dodge" class="flex-1 py-1 text-[11px] font-fredoka font-bold rounded-lg text-pink-600">Party Rush</button>
+          <button onclick="switchGame('memory')" id="tab-memory" class="flex-1 py-1 text-[11px] font-fredoka font-bold rounded-lg text-pink-600">Memory Card</button>
+        </div>
+
+        <div class="w-full bg-white rounded-2xl border-2 border-pink-300 h-56 relative overflow-hidden shadow-inner flex flex-col justify-center items-center" id="gameArea">
+          <canvas id="catchCanvas" class="w-full h-full block"></canvas>
+          <canvas id="dodgeCanvas" class="w-full h-full hidden"></canvas>
+          <div id="memoryUI" class="hidden w-full h-full p-2 grid grid-cols-4 gap-1.5"></div>
+
+          <div id="gameOverlay" class="absolute inset-0 bg-white/95 backdrop-blur-sm flex flex-col items-center justify-center p-4 text-center z-10">
+            <h3 id="overlayTitle" class="font-fredoka text-base text-pink-600 font-bold mb-1">Catch Cake & Avoid Bombs! 🎉</h3>
+            <p id="overlayDesc" class="text-[11px] text-slate-600 mb-2.5">Geser keranjang buat tangkap kue & hindari bom!</p>
+            <button onclick="startGame()" class="px-5 py-2 bg-pink-500 text-white font-fredoka text-xs font-bold rounded-full shadow-md hover:bg-pink-600 transition active:scale-95">
+              Mulai Main! 
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 7 -->
+    <section id="page-7" class="page-slide hidden w-full flex flex-col items-center text-center space-y-4">
+      <div class="glass-card p-5 rounded-3xl w-full flex flex-col items-center space-y-3">
+        <h2 class="font-fredoka text-xl text-pink-600 font-bold">Special Playlist Spotify 🎶</h2>
+        <p class="text-xs text-slate-600">Scan QR Code atau klik tombol di bawah buat dengerin playlist lagu khusus hari ini!</p>
+
+        <div class="bg-slate-900 text-white p-4 rounded-2xl w-full border-2 border-pink-400 shadow-xl flex flex-col items-center space-y-3">
+          <div class="flex items-center gap-2 text-emerald-400">
+            <i data-lucide="disc" class="w-5 h-5 animate-spin"></i>
+            <span class="font-fredoka text-xs font-bold tracking-wider">SPOTIFY PLAYLIST</span>
+          </div>
+
+          <div class="bg-white p-2.5 rounded-xl border-2 border-emerald-400">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https://open.spotify.com/playlist/7mZwSBCWn05gFVUu7GGeAs?si=XtLsdjvzQCyf_41a4X5H9A" alt="Spotify QR Code" class="w-32 h-32">
+          </div>
+
+          <a href="https://open.spotify.com/playlist/7mZwSBCWn05gFVUu7GGeAs?si=XtLsdjvzQCyf_41a4X5H9A" target="_blank" class="w-full py-2.5 bg-emerald-500 hover:bg-emerald-600 text-slate-900 font-fredoka font-bold rounded-xl shadow-md transition flex items-center justify-center gap-2 text-xs">
+            <i data-lucide="external-link" class="w-4 h-4"></i> Buka Playlist Spotify 🎵
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 8 -->
+    <section id="page-8" class="page-slide hidden w-full flex flex-col items-center text-center space-y-4">
+      <div class="glass-card p-5 rounded-3xl w-full flex flex-col items-center space-y-3">
+        <h2 class="font-fredoka text-xl text-pink-600 font-bold">Final Special Gift! 🎁</h2>
+        <p class="text-xs text-slate-600">Ada satu kado spesial terakhir dari Pasya khusus buat Syerli...</p>
+
+        <div onclick="openFinalGift()" class="cursor-pointer bg-gradient-to-br from-pink-300 to-rose-300 p-6 rounded-3xl border-4 border-white shadow-xl flex flex-col items-center space-y-2 w-full relative overflow-hidden group hover:scale-105 transition">
+          <div class="w-16 h-16 bg-pink-500 rounded-2xl flex items-center justify-center shadow-md border-2 border-white group-hover:rotate-12 transition">
+            <i data-lucide="gift" class="w-8 h-8 text-white animate-bounce"></i>
+          </div>
+          <span class="font-fredoka text-xs text-pink-700 font-bold">Klik Untuk Membuka Kado Rahasia! </span>
+        </div>
+
+        <div id="giftSecretModal" class="hidden bg-white p-4 rounded-2xl border-2 border-pink-400 shadow-lg text-left space-y-2.5 animate-fade-in w-full">
+          <div class="flex items-center gap-2 text-pink-600 font-fredoka font-bold text-xs">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            <span>SURPRISE UNLOCKED! 🎉</span>
+          </div>
+          <p class="text-xs text-slate-700 leading-relaxed font-sans">
+            Yeayyy! Selamat ulang tahun yang ke-20 Syerli! 💕 <br/><br/>
+            Ada hadiah fisik rahasia spesial yang udah disiapin buat kamu. 
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom Navigation -->
+  <footer class="w-full p-4 z-25 max-w-md mx-auto">
+    <div class="glass-card px-4 py-2.5 rounded-2xl flex justify-between items-center border border-pink-300 shadow-md">
+      <button id="prevBtn" onclick="prevPage()" class="px-3.5 py-1.5 bg-pink-200 text-pink-700 font-fredoka text-xs font-bold rounded-xl hover:bg-pink-300 transition flex items-center gap-1 disabled:opacity-40">
+        <i data-lucide="chevron-left" class="w-4 h-4"></i> Prev
+      </button>
+
+      <div id="pageDots" class="flex gap-1.5"></div>
+
+      <button id="nextBtn" onclick="nextPage()" class="px-3.5 py-1.5 bg-pink-500 text-white font-fredoka text-xs font-bold rounded-xl hover:bg-pink-600 transition flex items-center gap-1">
+        Next <i data-lucide="chevron-right" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    let currentPage = 1;
+    const totalPages = 8;
+    let bgmAudioCtx = null;
+    let isBgmPlaying = false;
+    let candleBlown = false;
+
+    lucide.createIcons();
+
+    function setupDots() {
+      const container = document.getElementById('pageDots');
+      container.innerHTML = '';
+      for (let i = 1; i <= totalPages; i++) {
+        const dot = document.createElement('span');
+        dot.className = `w-2 h-2 rounded-full transition-all ${i === currentPage ? 'bg-pink-600 w-4' : 'bg-pink-300'}`;
+        container.appendChild(dot);
+      }
+    }
+
+    function updatePages() {
+      for (let i = 1; i <= totalPages; i++) {
+        const page = document.getElementById(`page-${i}`);
+        if (i === currentPage) {
+          page.classList.remove('hidden');
+          page.classList.add('flex');
+        } else {
+          page.classList.add('hidden');
+          page.classList.remove('flex');
+        }
+      }
+      document.getElementById('prevBtn').disabled = currentPage === 1;
+      document.getElementById('nextBtn').disabled = currentPage === totalPages;
+      setupDots();
+      if (currentPage === 6) initCurrentGame();
+    }
+
+    function nextPage() { if (currentPage < totalPages) { currentPage++; updatePages(); } }
+    function prevPage() { if (currentPage > 1) { currentPage--; updatePages(); } }
+
+    function toggleBGM() {
+      if (!bgmAudioCtx) bgmAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      isBgmPlaying = !isBgmPlaying;
+      if (isBgmPlaying) {
+        document.getElementById('bgmBtn').classList.add('bg-pink-200');
+        playBirthdayMelody();
+      } else {
+        document.getElementById('bgmBtn').classList.remove('bg-pink-200');
+      }
+    }
+
+    function playNote(freq, duration, startTime) {
+      if (!bgmAudioCtx || !isBgmPlaying) return;
+      const osc = bgmAudioCtx.createOscillator();
+      const gain = bgmAudioCtx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0.15, startTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
+      osc.connect(gain);
+      gain.connect(bgmAudioCtx.destination);
+      osc.start(startTime);
+      osc.stop(startTime + duration);
+    }
+
+    function playBirthdayMelody() {
+      if (!isBgmPlaying) return;
+      const now = bgmAudioCtx.currentTime;
+      const notes = [
+        { f: 264, d: 0.4 }, { f: 264, d: 0.4 }, { f: 297, d: 0.8 }, { f: 264, d: 0.8 }, { f: 352, d: 0.8 }, { f: 330, d: 1.2 },
+        { f: 264, d: 0.4 }, { f: 264, d: 0.4 }, { f: 297, d: 0.8 }, { f: 264, d: 0.8 }, { f: 396, d: 0.8 }, { f: 352, d: 1.2 }
+      ];
+      let delay = 0;
+      notes.forEach(n => { playNote(n.f, n.d, now + delay); delay += n.d; });
+      setTimeout(() => { if (isBgmPlaying) playBirthdayMelody(); }, delay * 1000 + 500);
+    }
+
+    function playApplauseSound() {
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const bufferSize = audioCtx.sampleRate * 1.5;
+      const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+      const noise = audioCtx.createBufferSource();
+      noise.buffer = buffer;
+      const filter = audioCtx.createBiquadFilter();
+      filter.type = 'bandpass'; filter.frequency.value = 1000;
+      const gain = audioCtx.createGain();
+      gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 1.5);
+      noise.connect(filter); filter.connect(gain); gain.connect(audioCtx.destination);
+      noise.start();
+    }
+
+    function blowCandle() {
+      if (candleBlown) return;
+      candleBlown = true;
+      const flames = document.getElementById('flamesContainer');
+      flames.style.opacity = '0';
+      flames.style.transition = 'opacity 0.5s ease-out';
+      document.getElementById('blowStatus').innerText = "Horeee! Lilinnya sudah ditiup! 🥳🎉";
+      confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+      playApplauseSound();
+    }
+
+    function sendQuickReply() { appendChatMessage('Syerli (You)', 'Makasi banyakkk 💖✨', true); triggerAutoReplies(); }
+    function sendCustomChat() {
+      const input = document.getElementById('customChatInput');
+      const msg = input.value.trim();
+      if (msg) { appendChatMessage('Syerli (You)', msg, true); input.value = ''; triggerAutoReplies(); }
+    }
+
+    function appendChatMessage(sender, text, isSelf) {
+      const container = document.getElementById('chatContainer');
+      const div = document.createElement('div');
+      div.className = isSelf ? 'flex gap-2 items-start justify-end' : 'flex gap-2 items-start';
+      div.innerHTML = isSelf ? `
+        <div class="bg-pink-500 text-white p-2.5 rounded-2xl rounded-tr-none shadow-sm max-w-[80%]">
+          <span class="font-fredoka text-pink-100 font-bold block text-[10px] mb-0.5">${sender}</span>${text}
+        </div><div class="w-7 h-7 rounded-full bg-pink-600 border border-white flex items-center justify-center font-fredoka font-bold text-white text-xs shrink-0">S</div>
+      ` : `
+        <div class="w-7 h-7 rounded-full bg-pink-400 border border-white flex items-center justify-center font-fredoka font-bold text-white text-xs shrink-0">${sender[0]}</div>
+        <div class="bg-white border border-pink-200 p-2.5 rounded-2xl rounded-tl-none shadow-sm max-w-[80%]">
+          <span class="font-fredoka text-pink-600 font-bold block text-[10px] mb-0.5">${sender}</span>${text}
+        </div>
+      `;
+      container.appendChild(div);
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function triggerAutoReplies() {
+      setTimeout(() => {
+        const resp = [
+          { sender: 'Pasya ', text: 'Sama-sama Syerli kesayangan! Sehat & happy terus yaa! 🥰' },
+          { sender: 'Andin ', text: 'Sama-sama bestieee! Ditunggu traktiran ultahnya yaaa wkwk 🤭🎂' }
+        ];
+        const chosen = resp[Math.floor(Math.random() * resp.length)];
+        appendChatMessage(chosen.sender, chosen.text, false);
+      }, 1200);
+    }
+
+    function toggleEnvelope() {
+      const cover = document.getElementById('envelopeCover');
+      const content = document.getElementById('envelopeContent');
+      if (content.classList.contains('hidden')) {
+        cover.classList.add('hidden'); content.classList.remove('hidden');
+        confetti({ particleCount: 50, spread: 60, origin: { y: 0.5 } });
+      } else {
+        cover.classList.remove('hidden'); content.classList.add('hidden');
+      }
+    }
+
+    function openFinalGift() {
+      document.getElementById('giftSecretModal').classList.remove('hidden');
+      confetti({ particleCount: 150, spread: 90, origin: { y: 0.6 } });
+      playApplauseSound();
+    }
+
+    let activeGame = 'catch';
+    let score = 0;
+    let gameLoopId = null;
+
+    function updateScore(pts) {
+      score += pts;
+      document.getElementById('gameScoreText').innerText = `Score: ${score}`;
+      if (score > 0 && score % 50 === 0) { confetti({ particleCount: 70, spread: 70 }); playApplauseSound(); }
+    }
+
+    function switchGame(type) {
+      activeGame = type;
+      cancelAnimationFrame(gameLoopId);
+      ['catch', 'dodge', 'memory'].forEach(t => {
+        document.getElementById(`tab-${t}`).className = `flex-1 py-1 text-[11px] font-fredoka font-bold rounded-lg ${type===t?'bg-pink-500 text-white shadow':'text-pink-600'}`;
+      });
+      document.getElementById('catchCanvas').classList.toggle('hidden', type !== 'catch');
+      document.getElementById('dodgeCanvas').classList.toggle('hidden', type !== 'dodge');
+      document.getElementById('memoryUI').classList.toggle('hidden', type !== 'memory');
+      document.getElementById('gameOverlay').classList.remove('hidden');
+    }
+
+    function startGame() {
+      document.getElementById('gameOverlay').classList.add('hidden');
+      score = 0; updateScore(0);
+      if (activeGame === 'catch') initCatchGame();
+      else if (activeGame === 'dodge') initDodgeGame();
+      else if (activeGame === 'memory') initMemoryGame();
+    }
+
+    function initCurrentGame() { switchGame(activeGame); }
+
+    function initCatchGame() {
+      const canvas = document.getElementById('catchCanvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = canvas.parentElement.clientWidth;
+      canvas.height = canvas.parentElement.clientHeight;
+      let bx = canvas.width / 2 - 25, items = [], timer = 0;
+
+      function loop() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#f43f5e';
+        ctx.beginPath(); ctx.roundRect(bx, canvas.height - 22, 50, 14, 7); ctx.fill();
+
+        timer++;
+        if (timer % 45 === 0) {
+          const isBomb = Math.random() < 0.3;
+          items.push({ x: Math.random() * (canvas.width - 20), y: 0, isBomb, icon: isBomb ? '💣' : '🎂' });
+        }
+
+        for (let i = items.length - 1; i >= 0; i--) {
+          let it = items[i];
+          it.y += 2.5;
+          ctx.font = '18px serif';
+          ctx.fillText(it.icon, it.x, it.y);
+
+          if (it.y >= canvas.height - 30 && it.x >= bx - 10 && it.x <= bx + 50) {
+            updateScore(it.isBomb ? -10 : 10);
+            items.splice(i, 1);
+          } else if (it.y > canvas.height) {
+            items.splice(i, 1);
+          }
+        }
+        gameLoopId = requestAnimationFrame(loop);
+      }
+
+      const move = (e) => {
+        const rect = canvas.getBoundingClientRect();
+        bx = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left - 25;
+      };
+      canvas.onmousemove = move; canvas.ontouchmove = move;
+      loop();
+    }
+
+    function initDodgeGame() {
+      const canvas = document.getElementById('dodgeCanvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = canvas.parentElement.clientWidth;
+      canvas.height = canvas.parentElement.clientHeight;
+      let px = canvas.width / 2, obs = [];
+
+      function loop() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.font = '22px serif';
+        ctx.fillText('👑', px - 11, canvas.height - 18);
+
+        if (Math.random() < 0.05) {
+          obs.push({ x: Math.random() * (canvas.width - 20), y: 0, isStar: Math.random() < 0.4 });
+        }
+
+        for (let i = obs.length - 1; i >= 0; i--) {
+          let ob = obs[i];
+          ob.y += 3;
+          ctx.fillText(ob.isStar ? '⭐' : '⏰', ob.x, ob.y);
+
+          if (ob.y >= canvas.height - 25 && Math.abs(ob.x - px) < 22) {
+            updateScore(ob.isStar ? 15 : -10);
+            obs.splice(i, 1);
+          } else if (ob.y > canvas.height) {
+            obs.splice(i, 1);
+          }
+        }
+        gameLoopId = requestAnimationFrame(loop);
+      }
+
+      const move = (e) => {
+        const rect = canvas.getBoundingClientRect();
+        px = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+      };
+      canvas.onmousemove = move; canvas.ontouchmove = move;
+      loop();
+    }
+
+    function initMemoryGame() {
+      const ui = document.getElementById('memoryUI');
+      ui.innerHTML = '';
+      const icons = ['🎂', '🎁', '💖', '👑', '🎂', '🎁', '💖', '👑'].sort(() => Math.random() - 0.5);
+      let flipped = [], matched = 0;
+
+      icons.forEach(icon => {
+        const btn = document.createElement('button');
+        btn.className = 'bg-pink-200 border-2 border-pink-400 rounded-xl flex items-center justify-center font-bold text-base text-transparent transition-all select-none h-12';
+        btn.innerText = icon;
+        
+        btn.onclick = () => {
+          if (flipped.length < 2 && !btn.classList.contains('bg-white')) {
+            btn.className = 'bg-white border-2 border-pink-400 rounded-xl flex items-center justify-center font-bold text-base text-slate-800 shadow h-12';
+            flipped.push({ btn, icon });
+
+            if (flipped.length === 2) {
+              if (flipped[0].icon === flipped[1].icon) {
+                updateScore(20);
+                matched += 2;
+                flipped = [];
+                if (matched === icons.length) { confetti({ particleCount: 100 }); playApplauseSound(); }
+              } else {
+                setTimeout(() => {
+                  flipped.forEach(f => f.btn.className = 'bg-pink-200 border-2 border-pink-400 rounded-xl flex items-center justify-center font-bold text-base text-transparent h-12');
+                  flipped = [];
+                }, 700);
+              }
+            }
+          }
+        };
+        ui.appendChild(btn);
+      });
+    }
+
+    updatePages();
+  </script>
+</body>
+</html>
